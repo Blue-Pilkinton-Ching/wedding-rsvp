@@ -1,18 +1,47 @@
 <script>
 	import image from '$lib/images/hana-and-nick.png?enhanced';
+	import { onMount } from 'svelte';
+	import { quartOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 	export let data;
+
+	let animate = false;
+
+	onMount(() => (animate = true));
 </script>
 
 <div class="flex flex-row gap-10">
-	<div class="">
+	<div class="relative h-full">
 		<enhanced:img
+			fetchpriority="high"
+			loading="eager"
 			src={image}
 			alt="Hana and Nick"
-			class="w-auto max-h-[80vh] rounded-md shadow-md"
-			width="1188"
-			height="1810"
+			class="w-auto max-h-[80vh] opacity-0"
 		/>
+		{#if animate}
+			<div
+				class="absolute top-0 left-0 h-full w-full"
+				transition:fly={{
+					delay: 0,
+					duration: 1200,
+					x: -100,
+					y: 0,
+					opacity: 0,
+					easing: quartOut
+				}}
+			>
+				<enhanced:img
+					fetchpriority="high"
+					loading="eager"
+					src={image}
+					alt="Hana and Nick"
+					class="w-auto max-h-[80vh] rounded-md shadow-md"
+				/>
+			</div>
+		{/if}
 	</div>
+
 	<div class="flex flex-col justify-center gap-12 font-amiora my-8 pb-6">
 		<h1 class="xl:text-8xl text-7xl">Hana & Nick</h1>
 		<div class="relative w-3/4 mx-auto">
