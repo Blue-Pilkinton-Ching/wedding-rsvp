@@ -6,7 +6,9 @@
 
 <main class="h-dvh">
 	<nav class="w-full p-6">
-		<ul class="gap-6 flex flex-row-reverse list-none text-xl font-lato font-light border-b pb-6">
+		<ul
+			class="gap-6 flex flex-row-reverse list-none text-xl font-lato font-light border-gray-300 border-b pb-6"
+		>
 			<NavItem
 				href={`/${data.permission}/contact`}
 				label="CONTACT"
