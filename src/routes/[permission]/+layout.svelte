@@ -6,20 +6,22 @@
 
 <main class="h-dvh">
 	<nav class="w-full p-6">
-		<ul class="gap-6 flex flex-row list-none text-xl font-lato font-light">
-			<NavItem href={`/${data.permission}/home`} label="HOME" currentPath={$page.url.pathname} />
-			<NavItem href={`/${data.permission}/rsvp`} label="RSVP" currentPath={$page.url.pathname} />
-			<NavItem
-				href={`/${data.permission}/schedule`}
-				label="SCHEDULE"
-				currentPath={$page.url.pathname}
-			/>
+		<ul class="gap-6 flex flex-row-reverse list-none text-xl font-lato font-light border-b pb-6">
 			<NavItem
 				href={`/${data.permission}/contact`}
 				label="CONTACT"
 				currentPath={$page.url.pathname}
 			/>
+			<NavItem
+				href={`/${data.permission}/schedule`}
+				label="SCHEDULE"
+				currentPath={$page.url.pathname}
+			/>
+			<NavItem href={`/${data.permission}/rsvp`} label="RSVP" currentPath={$page.url.pathname} />
+			<NavItem href={`/${data.permission}/home`} label="HOME" currentPath={$page.url.pathname} />
 		</ul>
-		<slot></slot>
+		<section class="h-[calc(100vh-48px-28px-28px)] flex justify-center flex-col items-center">
+			<slot></slot>
+		</section>
 	</nav>
 </main>
