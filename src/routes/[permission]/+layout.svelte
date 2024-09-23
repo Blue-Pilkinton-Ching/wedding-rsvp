@@ -20,5 +20,6 @@
 				currentPath={$page.url.pathname}
 			/>
 		</ul>
+		<slot></slot>
 	</nav>
 </main>

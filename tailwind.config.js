@@ -4,7 +4,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				lato: ['Lato', 'sans-serif']
+				lato: ['Lato', 'sans-serif'],
+				amiora: ['Amiora', 'sans-serif']
 			}
 		}
 	},
