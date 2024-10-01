@@ -1,8 +1,9 @@
 <script>
 	import image from '$lib/images/hana-and-nick.png?enhanced';
 	import { onMount } from 'svelte';
-	import { cubicOut, quadOut, quartOut, quintOut } from 'svelte/easing';
+	import { cubicOut, quartOut, quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+	import AnimatablePage from '../AnimatablePage.svelte';
 	export let data;
 
 	let animate = false;
@@ -10,7 +11,7 @@
 	onMount(() => (animate = true));
 </script>
 
-{#if animate}
+<AnimatablePage>
 	<div class="flex flex-row gap-10">
 		<div class="relative h-full">
 			<div
@@ -71,4 +72,4 @@
 			</div>
 		</div>
 	</div>
-{/if}
+</AnimatablePage>

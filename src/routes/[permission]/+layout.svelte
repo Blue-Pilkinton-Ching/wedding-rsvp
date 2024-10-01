@@ -22,7 +22,7 @@
 			<NavItem href={`/${data.permission}/rsvp`} label="RSVP" currentPath={$page.url.pathname} />
 			<NavItem href={`/${data.permission}/home`} label="HOME" currentPath={$page.url.pathname} />
 		</ul>
-		<section class="h-[calc(100vh-48px-28px-28px)] flex justify-center flex-col items-center">
+		<section class="h-[calc(100vh-48px-28px-28px)] flex flex-col items-center">
 			<slot></slot>
 		</section>
 	</nav>
