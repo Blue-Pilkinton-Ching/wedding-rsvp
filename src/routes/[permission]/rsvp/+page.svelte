@@ -26,9 +26,9 @@
 			class="xl:text-4xl text-7xl"
 			transition:fly={{
 				delay: 200,
-				duration: 1000,
+				duration: 850,
 				x: 0,
-				y: 100,
+				y: 50,
 				opacity: 0,
 				easing: quintOut
 			}}
@@ -39,10 +39,10 @@
 			<form
 				method="POST"
 				transition:fly={{
-					delay: 200,
-					duration: 1100,
+					delay: 300,
+					duration: 850,
 					x: 0,
-					y: 100,
+					y: 50,
 					opacity: 0,
 					easing: cubicOut
 				}}
@@ -75,10 +75,10 @@
 				{/each}
 				<div
 					transition:fly={{
-						delay: 200,
-						duration: 1300,
+						delay: 300,
+						duration: 1000,
 						x: 0,
-						y: 100,
+						y: 50,
 						opacity: 0,
 						easing: cubicOut
 					}}
