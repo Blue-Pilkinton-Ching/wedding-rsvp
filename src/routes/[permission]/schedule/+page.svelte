@@ -5,6 +5,8 @@
 	import AnimatablePage from '../AnimatablePage.svelte';
 
 	export let data;
+
+	import { PUBLIC_GOOGLE_API_KEY } from '$env/static/public';
 </script>
 
 <AnimatablePage>
@@ -90,7 +92,7 @@
 							loading="lazy"
 							allowfullscreen
 							referrerpolicy="no-referrer-when-downgrade"
-							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD_ENkXHl7c0-pBhOHKb1K9y0NkS90voQc
+							src="https://www.google.com/maps/embed/v1/place?key={PUBLIC_GOOGLE_API_KEY}
           &q=Futuna Chapel,Wellington"
 						>
 						</iframe>
@@ -160,7 +162,7 @@
 				loading="lazy"
 				allowfullscreen
 				referrerpolicy="no-referrer-when-downgrade"
-				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD_ENkXHl7c0-pBhOHKb1K9y0NkS90voQc
+				src="https://www.google.com/maps/embed/v1/place?key={PUBLIC_GOOGLE_API_KEY}
       &q=Prefab-ACME,Wellington"
 			>
 			</iframe>
