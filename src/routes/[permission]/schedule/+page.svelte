@@ -7,9 +7,6 @@
 	import AnimatablePage from '../AnimatablePage.svelte';
 
 	export let data;
-
-	import { PUBLIC_GOOGLE_API_KEY } from '$env/static/public';
-	import { enhance } from '$app/forms';
 </script>
 
 <AnimatablePage>
@@ -110,7 +107,7 @@
 				easing: quintOut
 			}}
 		>
-			{data.permission === 'reception' ? 'Come join us for the reception' : 'Reception'}
+			{data.permission === 'reception' ? 'Join us for our wedding reception!' : 'Reception'}
 		</h1>
 
 		<div class="gap-2 flex flex-col">
