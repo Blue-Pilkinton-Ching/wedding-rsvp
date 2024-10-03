@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import image from '$lib/images/black-and-white.png?enhanced';
+	import image from '$lib/images/kissy.jpg?enhanced';
 	import { Input, Label, Card, Button } from 'flowbite-svelte';
 	import * as Icon from 'flowbite-svelte-icons';
 	import { onMount } from 'svelte';

@@ -15,6 +15,10 @@
 				currentPath={$page.url.pathname}
 			/>
 			<NavItem
+				href={`/${data.permission}/gifts`}
+				label="GIFTS"
+				currentPath={$page.url.pathname}
+			/><NavItem
 				href={`/${data.permission}/schedule`}
 				label="SCHEDULE"
 				currentPath={$page.url.pathname}

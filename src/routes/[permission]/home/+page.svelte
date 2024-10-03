@@ -50,7 +50,7 @@
 				Hana & Nick
 			</h1>
 			<div
-				class="relative w-3/4 mx-auto"
+				class="relative mx-auto"
 				transition:fly={{
 					delay: 300,
 					duration: 1200,
@@ -60,14 +60,15 @@
 					easing: cubicOut
 				}}
 			>
-				<div
-					class="absolute top-2 right-2 w-full h-full bg-gray-300 rounded-md transition-all duration-300 group-hover:top-4 group-hover:left-4"
-				></div>
 				<a
 					href="/{data.permission}/rsvp"
-					class="font-amiora tracking-wider block text-center relative z-10 text-3xl font-bold shadow-md rounded-md w-full p-4 bg-black text-white group hover:translate-x-1.5 hover:-translate-y-1.5 transition-all duration-300 hover:bg-gray-800 active:translate-x-0 active:translate-y-0 active:bg-gray-900"
+					class="font-amiora block text-center active:duration-300 active:scale-95 bg-black relative z-10 text-4xl font-bold shadow-md rounded-2xl p-1 border-black text-black group hover:text-white *:duration-300 *:hover:bg-black"
 				>
-					RSVP Now!
+					<div
+						class="bg-white rounded-xl h-16 w-64 font-semibold tracking-wide text-center flex items-center justify-center pt-0.5"
+					>
+						RSVP
+					</div>
 				</a>
 			</div>
 		</div>

@@ -1,5 +1,7 @@
 <script lang="ts">
-	import image from '$lib/images/kissyimg.jpg?enhanced';
+	import image from '$lib/images/black-and-white.png?enhanced';
+	import prefabhall from '$lib/images/prefabhall.png?enhanced';
+	import chapel from '$lib/images/chapel.png';
 	import { cubicOut, quartOut, quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import AnimatablePage from '../AnimatablePage.svelte';
@@ -7,6 +9,7 @@
 	export let data;
 
 	import { PUBLIC_GOOGLE_API_KEY } from '$env/static/public';
+	import { enhance } from '$app/forms';
 </script>
 
 <AnimatablePage>
@@ -85,17 +88,11 @@
 							easing: cubicOut
 						}}
 					>
-						<iframe
+						<img
 							class="rounded-md shadow-md w-full aspect-square"
-							title="map"
-							style="border:0"
-							loading="lazy"
-							allowfullscreen
-							referrerpolicy="no-referrer-when-downgrade"
-							src="https://www.google.com/maps/embed/v1/place?key={PUBLIC_GOOGLE_API_KEY}
-          &q=Futuna Chapel,Wellington"
-						>
-						</iframe>
+							src={chapel}
+							alt="Map of Futuna Chapel"
+						/>
 					</div>
 				</div>
 			{/if}
@@ -155,17 +152,7 @@
 				easing: cubicOut
 			}}
 		>
-			<iframe
-				class="rounded-md shadow-md w-full aspect-square"
-				title="map"
-				style="border:0"
-				loading="lazy"
-				allowfullscreen
-				referrerpolicy="no-referrer-when-downgrade"
-				src="https://www.google.com/maps/embed/v1/place?key={PUBLIC_GOOGLE_API_KEY}
-      &q=Prefab-ACME,Wellington"
-			>
-			</iframe>
+			<enhanced:img class="rounded-md shadow-md w-full aspect-square" src={prefabhall} />
 		</div>
 	</div>
 </AnimatablePage>
