@@ -33,7 +33,7 @@
 			{:else}
 				<div class="flex flex-col font-amiora sm:w-[450px] w-full gap-6 my-8 pb-6">
 					<h1
-						class="xl:text-5xl text-7xl"
+						class="xl:text-5xl text-6xl"
 						transition:fly={{
 							delay: 200,
 							duration: 1200,
@@ -95,9 +95,9 @@
 			{/if}
 		</div>
 	</div>
-	<div class="flex flex-col font-amiora w-[450px] max-w-[100vw] gap-6 sm:my-8 pb-6">
+	<div class="flex flex-col font-amiora sm:w-[450px] w-full gap-6 sm:my-8 pb-6">
 		<h1
-			class="xl:text-5xl text-4xl"
+			class={data.permission === 'reception' ? 'sm:text-5xl text-4xl' : 'text-6xl'}
 			transition:fly={{
 				delay: 200,
 				duration: 1200,
