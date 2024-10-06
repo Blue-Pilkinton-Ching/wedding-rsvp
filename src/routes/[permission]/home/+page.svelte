@@ -12,7 +12,7 @@
 </script>
 
 <AnimatablePage>
-	<div class="flex flex-row gap-10">
+	<div class="flex flex-col sm:flex-row gap-10">
 		<div class="relative h-full">
 			<div
 				class=" top-0 left-0 h-full w-full"
@@ -37,7 +37,7 @@
 
 		<div class="flex flex-col justify-center gap-12 font-amiora my-8 pb-6">
 			<h1
-				class="xl:text-8xl text-7xl"
+				class="xl:text-8xl text-7xl text-center sm:text-start"
 				transition:fly={{
 					delay: 200,
 					duration: 1200,

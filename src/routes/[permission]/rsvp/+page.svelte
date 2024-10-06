@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import image from '$lib/images/kissy.jpg?enhanced';
-	import { Input, Label, Card, Button } from 'flowbite-svelte';
+	import { Card, Button } from 'flowbite-svelte';
 	import * as Icon from 'flowbite-svelte-icons';
 	import { onMount } from 'svelte';
 	import { cubicOut, quartOut, quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
-	import type { Person } from '$lib/schema';
 	import AnimatablePage from '../AnimatablePage.svelte';
+	import Person from './Person.svelte';
+	import { v4 as uuid } from 'uuid';
 
 	export let data;
 
@@ -15,15 +16,17 @@
 
 	onMount(() => (animate = true));
 
-	let people: Array<Person> = [];
+	let people: Array<string> = [];
 
 	$: people;
+
+	console.log(people);
 </script>
 
 <AnimatablePage>
 	<div class="flex flex-col font-amiora w-96 gap-3 my-8 pb-6">
 		<h1
-			class="xl:text-4xl text-7xl"
+			class="text-4xl"
 			transition:fly={{
 				delay: 200,
 				duration: 850,
@@ -49,31 +52,22 @@
 				use:enhance
 				class="font-lato gap-3 flex flex-col"
 			>
-				<div>
-					<Label class="block mb-2">Your email</Label>
-					<Input id="email" name="email" required placeholder="name@gmail.com" />
-				</div>
-				{#each people as person}
-					<Card class="flex flex-col gap-3">
-						<div>
-							<Label class="block mb-2">First Name</Label>
-							<Input id="firstName" name="firstName" required placeholder="Mary" />
-						</div>
-						<div>
-							<Label class="block mb-2">Last Name</Label>
-							<Input id="lastName" name="lastName" required placeholder="Jane" />
-						</div>
-						<div>
-							<Label class="block mb-2">Diet Requirements</Label>
-							<Input
-								id="dietRequirements"
-								name="dietRequirements"
-								placeholder="Vegan, Gluten-free"
-							/>
-						</div>
-					</Card>
+				<Person showCeremony={data.permission === 'ceremony'} id={uuid()} />
+				{#each people as person (person)}
+					<Card class="mt-3"
+						><Person
+							optionalPerson
+							id={person}
+							onDelete={(id) => {
+								people = [...people.filter((p) => p !== id)];
+								console.log(id, people);
+							}}
+							showCeremony={data.permission === 'ceremony'}
+						/></Card
+					>
 				{/each}
 				<div
+					class="flex flex-row gap-2 *:w-full duration-200"
 					transition:fly={{
 						delay: 300,
 						duration: 1000,
@@ -83,18 +77,14 @@
 						easing: cubicOut
 					}}
 				>
-					<Button
+					<Button outline size="xs" type="submit" class="text-sm duration-200"
+						><Icon.MailBoxOutline class="w-6 h-6 me-2"></Icon.MailBoxOutline>RSVP!</Button
+					><Button
 						size="xs"
-						class="text-sm"
-						on:click={() =>
-							(people = [
-								...people,
-								{
-									firstName: '',
-									lastName: '',
-									dietRequirements: ''
-								}
-							])}><Icon.PlusOutline class="w-6 h-6 me-2"></Icon.PlusOutline>Add Person</Button
+						class="text-sm "
+						on:click={() => {
+							people = [...people, uuid()];
+						}}><Icon.PlusOutline class="w-6 h-6 me-2"></Icon.PlusOutline>Add Person</Button
 					>
 				</div>
 			</form>
