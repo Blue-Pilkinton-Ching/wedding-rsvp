@@ -31,7 +31,7 @@
 					class="w-auto max-h-[80vh] rounded-md shadow-md"
 				/>
 			{:else}
-				<div class="flex flex-col font-amiora w-[450px] max-w-[100vw] gap-6 my-8 pb-6">
+				<div class="flex flex-col font-amiora sm:w-[450px] w-full gap-6 my-8 pb-6">
 					<h1
 						class="xl:text-5xl text-7xl"
 						transition:fly={{
@@ -51,7 +51,7 @@
 							class="font-medium text-xl"
 							transition:fly={{
 								delay: 300,
-								duration: 1200,
+								duration: 1000,
 								x: 100,
 								y: 0,
 								opacity: 0,
@@ -64,7 +64,7 @@
 							class="font-medium text-xl"
 							transition:fly={{
 								delay: 300,
-								duration: 1200,
+								duration: 1000,
 								x: 100,
 								y: 0,
 								opacity: 0,
@@ -77,8 +77,8 @@
 					<div
 						class="relative w-full"
 						transition:fly={{
-							delay: 450,
-							duration: 1200,
+							delay: 300,
+							duration: 1000,
 							x: 100,
 							y: 0,
 							opacity: 0,
@@ -95,9 +95,9 @@
 			{/if}
 		</div>
 	</div>
-	<div class="flex flex-col font-amiora w-[450px] max-w-[100vw] gap-6 my-8 pb-6">
+	<div class="flex flex-col font-amiora w-[450px] max-w-[100vw] gap-6 sm:my-8 pb-6">
 		<h1
-			class="xl:text-5xl text-7xl"
+			class="xl:text-5xl text-4xl"
 			transition:fly={{
 				delay: 200,
 				duration: 1200,
@@ -115,7 +115,7 @@
 				class="font-medium text-xl"
 				transition:fly={{
 					delay: 300,
-					duration: 1200,
+					duration: 1000,
 					x: 100,
 					y: 0,
 					opacity: 0,
@@ -128,7 +128,7 @@
 				class="font-medium text-xl"
 				transition:fly={{
 					delay: 300,
-					duration: 1200,
+					duration: 1000,
 					x: 100,
 					y: 0,
 					opacity: 0,
@@ -142,7 +142,7 @@
 			class="relative w-full"
 			transition:fly={{
 				delay: 450,
-				duration: 1200,
+				duration: 1000,
 				x: 100,
 				y: 0,
 				opacity: 0,

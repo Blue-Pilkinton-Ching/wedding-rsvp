@@ -5,5 +5,7 @@
 </script>
 
 {#if animate}
-	<div class="mt-auto"><div class="my-12 flex flex-row gap-10"><slot></slot></div></div>
+	<div class="mt-auto w-full sm:w-auto">
+		<div class="my-12 flex flex-col sm:flex-row gap-10"><slot></slot></div>
+	</div>
 {/if}

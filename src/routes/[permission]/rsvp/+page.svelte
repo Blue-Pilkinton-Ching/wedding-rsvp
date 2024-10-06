@@ -24,7 +24,7 @@
 </script>
 
 <AnimatablePage>
-	<div class="flex flex-col font-amiora w-96 gap-3 my-8 pb-6">
+	<div class="flex flex-col font-amiora w-full sm:w-96 gap-3 sm:mb-8 pb-6">
 		<h1
 			class="text-4xl"
 			transition:fly={{
@@ -92,7 +92,7 @@
 	</div>
 	<div class="relative">
 		<div
-			class=" top-0 left-0 w-full"
+			class="top-0 left-0 w-full"
 			transition:fly={{
 				delay: 0,
 				duration: 1200,
