@@ -8,6 +8,7 @@
 	import AnimatablePage from '../AnimatablePage.svelte';
 	import Person from './Person.svelte';
 	import { v4 as uuid } from 'uuid';
+	import type { SubmitFunction } from '@sveltejs/kit';
 
 	export let data;
 
@@ -17,7 +18,9 @@
 
 	$: people, hasRSVP;
 
-	console.log(people);
+	function handleSubmit() {
+		hasRSVP = true;
+	}
 </script>
 
 {#if hasRSVP}
@@ -60,9 +63,6 @@
 			</h1>
 			<div class="relative w-full">
 				<form
-					on:submit={() => {
-						hasRSVP = true;
-					}}
 					method="POST"
 					transition:fly={{
 						delay: 300,
@@ -72,7 +72,7 @@
 						opacity: 0,
 						easing: cubicOut
 					}}
-					use:enhance
+					use:enhance={handleSubmit}
 					class="font-lato gap-3 flex flex-col"
 				>
 					<Person showCeremony={data.permission === 'ceremony'} id={uuid()} />

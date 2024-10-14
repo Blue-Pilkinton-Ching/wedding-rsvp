@@ -1,3 +1,5 @@
+import { google } from 'googleapis';
+
 interface FormEntry {
 	firstName: string;
 	lastName: string;
@@ -11,11 +13,29 @@ interface FormEntry {
 	attend_ceremony: boolean | undefined;
 }
 
+interface Entry {
+	id: string;
+	firstName?: string;
+	lastName?: string;
+	email?: string;
+	diet_requirements?: string;
+	accessibility_requirements?: string;
+	happy_marriage?: string;
+	song_requests?: string;
+	attend_reception?: boolean;
+	will_not_attend?: boolean;
+	attend_ceremony?: boolean;
+}
+
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
+const SPREADSHEET_ID = '1C1AWh1pdLQVht70DueyREP4uWfvhSRx1Wq5ovVfnqsE';
+const RANGE = 'Sheet1!B2:Z1000'; // Adjust this based on your spreadsheet structure
+
 export const actions = {
 	default: async (event) => {
 		const data = await event.request.formData();
 
-		const result: { [key: string]: Partial<FormEntry> } = {};
+		const result: { [key: string]: Partial<Entry> } = {};
 
 		const ids = new Set(Array.from(data.keys()).map((key) => key.split('.')[0]));
 
@@ -41,13 +61,51 @@ export const actions = {
 			}
 		});
 
-		const resultArray = Object.entries(result).map(([key, value]) => {
+		const resultArray: Entry[] = Object.entries(result).map(([key, value]) => {
 			return {
 				id: key,
 				...value
 			};
 		});
 
-		console.log(resultArray);
+		await insertDataIntoSheet(resultArray);
 	}
 };
+
+async function insertDataIntoSheet(data: Entry[]) {
+	const auth = new google.auth.GoogleAuth({
+		keyFile: 'cred.json',
+		scopes: SCOPES
+	});
+
+	const sheets = google.sheets({ version: 'v4', auth });
+
+	const values = data.map((entry) => [
+		entry.id,
+		entry.firstName,
+		entry.lastName,
+		entry.email,
+		entry.diet_requirements,
+		entry.accessibility_requirements,
+		entry.happy_marriage,
+		entry.song_requests,
+		entry.attend_reception,
+		entry.will_not_attend,
+		entry.attend_ceremony
+	]);
+
+	try {
+		const response = await sheets.spreadsheets.values.append({
+			spreadsheetId: SPREADSHEET_ID,
+			range: RANGE,
+			valueInputOption: 'USER_ENTERED',
+			requestBody: {
+				values: values
+			}
+		});
+
+		console.log('Data inserted successfully:', response.data);
+	} catch (error) {
+		console.error('Error inserting data:', error);
+	}
+}
