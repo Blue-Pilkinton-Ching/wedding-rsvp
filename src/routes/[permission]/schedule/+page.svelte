@@ -75,7 +75,7 @@
 						</h2>
 					</div>
 					<div
-						class="relative lg:w-full w-[504px] max-w-[100vw-48px]"
+						class="relative lg:w-full w-[504px] max-w-[calc(100vw-48px)]"
 						transition:fly={{
 							delay: 300,
 							duration: 1000,
