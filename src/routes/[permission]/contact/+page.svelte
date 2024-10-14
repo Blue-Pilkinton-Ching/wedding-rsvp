@@ -1,5 +1,5 @@
 <script>
-	import image from '$lib/images/hana-and-nick.png?enhanced';
+	import image from '$lib/images/tramp.jpg?enhanced';
 	import { onMount } from 'svelte';
 	import { cubicOut, quartOut, quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
@@ -34,50 +34,39 @@
 				/>
 			</div>
 		</div>
+	</div>
 
-		<div class="flex flex-col justify-center gap-12 font-amiora my-8 pb-6">
-			<h1
-				class="xl:text-8xl text-7xl"
-				transition:fly={{
-					delay: 200,
-					duration: 1200,
-					x: 100,
-					y: 0,
-					opacity: 0,
-					easing: quintOut
-				}}
-			>
-				<h1 class="text-center mb-6 text-6xl font-amiora font-light">Contact Us</h1>
-				<h2 class="mt-12 text-center mb-6 text-lg font-lato font-light max-w-[450px]">
-					Please see the <strong class="font-semibold relative"
-						><a
-							href={`/${data.permission}/schedule`}
-							class="after:absolute after:h-[1px] after:w-0 after:bg-black after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
-							>schedule</a
-						></strong
-					>
-					for more information. <br /><br />If you need any more details or have a change in plans,
-					feel free to email
-					<strong class="font-semibold relative"
-						><a
-							href="mailto:hello@nickandhana.com"
-							class="after:absolute after:h-[1px] after:w-0 after:bg-black after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
-							>hello@nickandhana.com</a
-						></strong
-					>. See you there!
-				</h2>
-			</h1>
-			<div
-				class="relative mx-auto"
-				transition:fly={{
-					delay: 300,
-					duration: 1200,
-					x: 100,
-					y: 0,
-					opacity: 0,
-					easing: cubicOut
-				}}
-			></div>
+	<div class="flex flex-col justify-center gap-12 font-amiora my-8 pb-6">
+		<div
+			class="xl:text-8xl text-7xl my-20"
+			transition:fly={{
+				delay: 200,
+				duration: 1200,
+				x: 100,
+				y: 0,
+				opacity: 0,
+				easing: quintOut
+			}}
+		>
+			<h1 class="text-center mb-6 text-6xl font-amiora font-light">Contact Us</h1>
+			<h2 class="mt-12 text-center mb-6 text-lg font-lato font-light max-w-[450px]">
+				Please see the <strong class="font-semibold relative"
+					><a
+						href={`/${data.permission}/schedule`}
+						class="after:absolute after:h-[1px] after:w-0 after:bg-black after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
+						>schedule</a
+					></strong
+				>
+				for more information. <br /><br />If you need any more details or have a change in plans,
+				feel free to email
+				<strong class="font-semibold relative"
+					><a
+						href="mailto:hello@nickandhana.com"
+						class="after:absolute after:h-[1px] after:w-0 after:bg-black after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
+						>hello@nickandhana.com</a
+					></strong
+				>. See you there!
+			</h2>
 		</div>
 	</div>
 </AnimatablePage>
