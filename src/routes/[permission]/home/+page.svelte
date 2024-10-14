@@ -1,14 +1,9 @@
 <script>
 	import image from '$lib/images/hana-and-nick.png?enhanced';
-	import { onMount } from 'svelte';
 	import { cubicOut, quartOut, quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import AnimatablePage from '../AnimatablePage.svelte';
 	export let data;
-
-	let animate = false;
-
-	onMount(() => (animate = true));
 </script>
 
 <AnimatablePage>

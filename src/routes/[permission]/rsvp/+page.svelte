@@ -3,7 +3,6 @@
 	import image from '$lib/images/kissy.jpg?enhanced';
 	import { Card, Button } from 'flowbite-svelte';
 	import * as Icon from 'flowbite-svelte-icons';
-	import { onMount } from 'svelte';
 	import { cubicOut, quartOut, quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import AnimatablePage from '../AnimatablePage.svelte';
@@ -11,10 +10,6 @@
 	import { v4 as uuid } from 'uuid';
 
 	export let data;
-
-	let animate = false;
-
-	onMount(() => (animate = true));
 
 	let people: Array<string> = [];
 
