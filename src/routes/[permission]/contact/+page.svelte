@@ -47,7 +47,25 @@
 					easing: quintOut
 				}}
 			>
-				Hana & Nick
+				<h1 class="text-center mb-6 text-6xl font-amiora font-light">Contact Us</h1>
+				<h2 class="mt-12 text-center mb-6 text-lg font-lato font-light max-w-[450px]">
+					Please see the <strong class="font-semibold relative"
+						><a
+							href={`/${data.permission}/schedule`}
+							class="after:absolute after:h-[1px] after:w-0 after:bg-black after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
+							>schedule</a
+						></strong
+					>
+					for more information. <br /><br />If you need any more details or have a change in plans,
+					feel free to email
+					<strong class="font-semibold relative"
+						><a
+							href="mailto:hello@nickandhana.com"
+							class="after:absolute after:h-[1px] after:w-0 after:bg-black after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
+							>hello@nickandhana.com</a
+						></strong
+					>. See you there!
+				</h2>
 			</h1>
 			<div
 				class="relative mx-auto"
@@ -59,18 +77,7 @@
 					opacity: 0,
 					easing: cubicOut
 				}}
-			>
-				<a
-					href="/{data.permission}/rsvp"
-					class="font-amiora block text-center active:scale-95 bg-black relative z-10 text-4xl font-bold shadow-md rounded-2xl p-1 border-black text-black group hover:text-white *:duration-300 *:hover:bg-black"
-				>
-					<div
-						class="bg-white rounded-xl h-16 w-64 font-semibold tracking-wide text-center flex items-center justify-center pt-0.5"
-					>
-						RSVP
-					</div>
-				</a>
-			</div>
+			></div>
 		</div>
 	</div>
 </AnimatablePage>
