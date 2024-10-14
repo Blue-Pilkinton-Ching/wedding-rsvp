@@ -15,6 +15,11 @@ const config = {
 		alias: {
 			$lib: './src/lib'
 		}
+	},
+	vitePlugin: {
+		hot: {
+			preserveLocalState: true
+		}
 	}
 };
 

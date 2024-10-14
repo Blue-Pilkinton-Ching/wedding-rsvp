@@ -7,6 +7,7 @@ interface FormEntry {
 	happy_marriage: string;
 	song_requests: string;
 	attend_reception: boolean | undefined;
+	will_not_attend: boolean | undefined;
 	attend_ceremony: boolean | undefined;
 }
 
@@ -21,6 +22,7 @@ export const actions = {
 		ids.forEach((id) => {
 			result[id] = {
 				attend_reception: false,
+				will_not_attend: false,
 				attend_ceremony: false
 			};
 		});
@@ -28,7 +30,11 @@ export const actions = {
 		data.forEach((value, key) => {
 			const [id, field] = key.split('.') as [string, keyof FormEntry];
 
-			if (field === 'attend_reception' || field === 'attend_ceremony') {
+			if (
+				field === 'attend_reception' ||
+				field === 'attend_ceremony' ||
+				field === 'will_not_attend'
+			) {
 				result[id][field] = value === 'on';
 			} else {
 				result[id][field] = value as string;

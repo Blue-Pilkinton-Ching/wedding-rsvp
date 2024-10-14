@@ -19,16 +19,16 @@
 	{#if !optionalPerson}
 		<div>
 			<Label class="block mb-2" for="{id}.email">Your email</Label>
-			<Input id="{id}.email" name="{id}.email" required />
+			<Input id="{id}.email" type="email" name="{id}.email" required />
 		</div>
 	{/if}
 	<div>
-		<Label class="block mb-2" for="{id}.diet_requirements">Any Diet Requirements</Label>
+		<Label class="block mb-2" for="{id}.diet_requirements">Any dietary requirements?</Label>
 		<Input id="{id}.diet_requirements" name="{id}.diet_requirements" />
 	</div>
 	<div>
 		<Label class="block mb-2" for="{id}.accessibility_requirements"
-			>Any Accessibility Requirements</Label
+			>Any accessibility requirements?</Label
 		>
 		<Input id="{id}.accessibility_requirements" name="{id}.accessibility_requirements" />
 	</div>
@@ -42,7 +42,7 @@
 	</div>
 	{#if showCeremony}
 		<div class="flex flex-row">
-			<Checkbox id="{id}.attend_ceremony" checked name="{id}.attend_ceremony" required>
+			<Checkbox id="{id}.attend_ceremony" checked name="{id}.attend_ceremony">
 				Tick this box to confirm you will be at the ceremony
 			</Checkbox>
 		</div>
@@ -50,6 +50,11 @@
 	<div>
 		<Checkbox id="{id}.attend_reception" checked name="{id}.attend_reception">
 			Tick this box to confirm you will be at the reception
+		</Checkbox>
+	</div>
+	<div>
+		<Checkbox id="{id}.will_not_attend" name="{id}.will_not_attend">
+			Tick this box if you will not be attending
 		</Checkbox>
 	</div>
 	{#if optionalPerson && onDelete}
