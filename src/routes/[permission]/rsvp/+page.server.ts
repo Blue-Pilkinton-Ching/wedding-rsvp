@@ -1,6 +1,3 @@
-import mail from '@sendgrid/mail';
-import { PRIVATE_SENDGRID_API_KEY, PRIVATE_EMAIL_ADDRESS } from '$env/static/private';
-
 interface FormEntry {
 	firstName: string;
 	lastName: string;
@@ -28,14 +25,8 @@ export const actions = {
 			};
 		});
 
-		let email;
-
 		data.forEach((value, key) => {
 			const [id, field] = key.split('.') as [string, keyof FormEntry];
-
-			if (field === 'email') {
-				email = value;
-			}
 
 			if (field === 'attend_reception' || field === 'attend_ceremony') {
 				result[id][field] = value === 'on';
@@ -52,23 +43,5 @@ export const actions = {
 		});
 
 		console.log(resultArray);
-
-		const msg = {
-			to: email, // Change to your recipient
-			from: PRIVATE_EMAIL_ADDRESS, // Change to your verified sender
-			subject: 'RSVP Confirmation',
-			html: `<p>Kia ora ${resultArray[0].firstName}\n\nThanks for your RSVP! `
-		};
-
-		mail.setApiKey(PRIVATE_SENDGRID_API_KEY);
-
-		mail
-			.send(msg)
-			.then(() => {
-				console.log(`Email sent to ${resultArray[0].email}`);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
 	}
 };

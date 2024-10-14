@@ -12,7 +12,7 @@
 <AnimatablePage>
 	<div class="relative">
 		<div
-			class=" top-0 left-0 w-full"
+			class=" top-0 left-0"
 			transition:fly={{
 				delay: 0,
 				duration: 1200,
@@ -28,12 +28,12 @@
 					loading="eager"
 					src={image}
 					alt="Hana and Nick"
-					class="w-auto max-h-[80vh] rounded-md shadow-md"
+					class="lg:w-auto w-full max-w-[504px] max-h-[80vh] rounded-md shadow-md"
 				/>
 			{:else}
-				<div class="flex flex-col font-amiora sm:w-[450px] w-full gap-6 my-8 pb-6">
+				<div class="flex flex-col font-amiora sm:w-[504px] lg:w-[450px] gap-6 my-8 sm:my-0 pb-6">
 					<h1
-						class="xl:text-5xl text-6xl"
+						class="text-5xl"
 						transition:fly={{
 							delay: 200,
 							duration: 1200,
@@ -75,7 +75,7 @@
 						</h2>
 					</div>
 					<div
-						class="relative w-full"
+						class="relative lg:w-full w-[504px] max-w-[100vw-48px]"
 						transition:fly={{
 							delay: 300,
 							duration: 1000,
@@ -95,9 +95,9 @@
 			{/if}
 		</div>
 	</div>
-	<div class="flex flex-col font-amiora sm:w-[450px] w-full gap-6 sm:my-8 pb-6">
+	<div class="flex flex-col font-amiora sm:w-[504px] lg:w-[450px] gap-6 my-8 sm:my-0 pb-6">
 		<h1
-			class={data.permission === 'reception' ? 'sm:text-5xl text-4xl' : 'text-6xl'}
+			class={data.permission === 'reception' ? 'sm:text-5xl text-4xl' : 'text-5xl'}
 			transition:fly={{
 				delay: 200,
 				duration: 1200,
@@ -139,7 +139,7 @@
 			</h2>
 		</div>
 		<div
-			class="relative w-full"
+			class="relative lg:w-full w-[504px] max-w-[calc(100vw-48px)]"
 			transition:fly={{
 				delay: 450,
 				duration: 1000,
