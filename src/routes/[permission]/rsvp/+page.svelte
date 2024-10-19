@@ -75,7 +75,7 @@
 					use:enhance={handleSubmit}
 					class="font-lato gap-3 flex flex-col"
 				>
-					<Person showCeremony={data.permission === 'ceremony'} id={uuid()} />
+					<Person showCeremony={data.permission === 'wedding'} id={uuid()} />
 					{#each people as person (person)}
 						<Card class="mt-3"
 							><Person
@@ -85,7 +85,7 @@
 									people = [...people.filter((p) => p !== id)];
 									console.log(id, people);
 								}}
-								showCeremony={data.permission === 'ceremony'}
+								showCeremony={data.permission === 'wedding'}
 							/></Card
 						>
 					{/each}
