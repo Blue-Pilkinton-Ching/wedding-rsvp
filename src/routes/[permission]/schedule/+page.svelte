@@ -58,7 +58,7 @@
 								easing: cubicOut
 							}}
 						>
-							2pm, Saturday 25 January 2025
+							1pm, Saturday 25 January 2025
 						</h2>
 						<h2
 							class="font-medium text-xl"
@@ -122,7 +122,7 @@
 					easing: cubicOut
 				}}
 			>
-				6pm, Saturday 25 January 2025
+				5pm, Saturday 25 January 2025
 			</h2>
 			<h2
 				class="font-medium text-xl"

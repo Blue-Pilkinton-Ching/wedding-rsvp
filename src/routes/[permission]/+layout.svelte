@@ -19,7 +19,9 @@
 				<div
 					class="h-[53px] list-none text-xl font-lato font-light border-gray-300 border-b pb-6"
 				></div>
-				<ul class="flex h-[calc(100vh-48px-53px)] flex-col items-center justify-center text-xl">
+				<ul
+					class="flex h-[calc(100vh-48px-53px)] flex-col-reverse items-center justify-center text-xl"
+				>
 					<NavItem
 						href={`/${data.permission}/contact`}
 						label="CONTACT"
