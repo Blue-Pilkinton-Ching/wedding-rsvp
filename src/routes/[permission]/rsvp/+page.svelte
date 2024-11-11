@@ -72,8 +72,8 @@
 					easing: quintOut
 				}}
 			>
-				If you're RSVPing for more than one person, please add them using the button at the bottom
-				of the page
+				If you're RSVPing for more than one person please add them using the button at the bottom of
+				the page.
 			</h3>
 			<div class="relative w-full">
 				<form
