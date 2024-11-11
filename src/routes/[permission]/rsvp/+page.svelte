@@ -61,6 +61,20 @@
 			>
 				Please RSVP Below
 			</h1>
+			<h3
+				class="text-lg"
+				transition:fly={{
+					delay: 200,
+					duration: 850,
+					x: 0,
+					y: 50,
+					opacity: 0,
+					easing: quintOut
+				}}
+			>
+				If you're RSVPing for more than one person, please add them using the button at the bottom
+				of the page
+			</h3>
 			<div class="relative w-full">
 				<form
 					method="POST"
@@ -100,9 +114,10 @@
 							easing: cubicOut
 						}}
 					>
-						<Button outline size="xs" type="submit" class="text-sm duration-200"
-							><Icon.MailBoxOutline class="w-6 h-6 me-2"></Icon.MailBoxOutline>RSVP!</Button
+						<Button size="xs" type="submit" class="text-sm duration-200"
+							><Icon.MailBoxOutline class="w-6 h-6 me-2"></Icon.MailBoxOutline>Submit!</Button
 						><Button
+							outline
 							size="xs"
 							class="text-sm "
 							on:click={() => {
