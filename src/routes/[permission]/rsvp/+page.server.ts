@@ -29,8 +29,7 @@ interface Entry {
 }
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
-// const SPREADSHEET_ID = '1C1AWh1pdLQVht70DueyREP4uWfvhSRx1Wq5ovVfnqsE';
-const SPREADSHEET_ID = '';
+const SPREADSHEET_ID = '1C1AWh1pdLQVht70DueyREP4uWfvhSRx1Wq5ovVfnqsE';
 const RANGE = 'Sheet1!B2:Z1000'; // Adjust this based on your spreadsheet structure
 export const actions = {
 	default: async (event) => {
