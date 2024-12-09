@@ -14,6 +14,9 @@ const config = {
 		adapter: adapter({ out: 'build' }),
 		alias: {
 			$lib: './src/lib'
+		},
+		csrf: {
+			checkOrigin: false
 		}
 	},
 	vitePlugin: {

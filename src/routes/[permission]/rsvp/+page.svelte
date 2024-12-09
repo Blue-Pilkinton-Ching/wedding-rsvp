@@ -68,7 +68,7 @@
 {:else if error}
 	<h1 class="my-12 text-center mb-6 text-3xl font-lato font-light">Whoops! Something went wrong</h1>
 	<h2 class="mt-12 text-center mb-6 text-lg font-lato font-light max-w-[500px]">
-		Please try again lateR.<br /><br />If the issue persists, please let us know at
+		Please try again later.<br /><br />If the issue persists, please let us know at
 		<strong class="font-semibold relative"
 			><a
 				href="mailto:hello@nickandhana.com"
