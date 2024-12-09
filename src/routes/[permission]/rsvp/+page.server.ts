@@ -1,3 +1,4 @@
+import { error } from '@sveltejs/kit';
 import { google } from 'googleapis';
 
 interface FormEntry {
@@ -28,51 +29,67 @@ interface Entry {
 }
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
-const SPREADSHEET_ID = '1C1AWh1pdLQVht70DueyREP4uWfvhSRx1Wq5ovVfnqsE';
+// const SPREADSHEET_ID = '1C1AWh1pdLQVht70DueyREP4uWfvhSRx1Wq5ovVfnqsE';
+const SPREADSHEET_ID = '';
 const RANGE = 'Sheet1!B2:Z1000'; // Adjust this based on your spreadsheet structure
-
 export const actions = {
 	default: async (event) => {
-		const data = await event.request.formData();
+		try {
+			const data = await event.request.formData();
+			const result: { [key: string]: Partial<Entry> } = {};
+			const ids = new Set(Array.from(data.keys()).map((key) => key.split('.')[0]));
 
-		const result: { [key: string]: Partial<Entry> } = {};
+			ids.forEach((id) => {
+				result[id] = {
+					attend_reception: false,
+					will_not_attend: false,
+					attend_ceremony: false
+				};
+			});
 
-		const ids = new Set(Array.from(data.keys()).map((key) => key.split('.')[0]));
+			data.forEach((value, key) => {
+				const [id, field] = key.split('.') as [string, keyof FormEntry];
 
-		ids.forEach((id) => {
-			result[id] = {
-				attend_reception: false,
-				will_not_attend: false,
-				attend_ceremony: false
-			};
-		});
+				if (
+					field === 'attend_reception' ||
+					field === 'attend_ceremony' ||
+					field === 'will_not_attend'
+				) {
+					result[id][field] = value === 'on';
+				} else {
+					result[id][field] = value as string;
+				}
+			});
 
-		data.forEach((value, key) => {
-			const [id, field] = key.split('.') as [string, keyof FormEntry];
-
-			if (
-				field === 'attend_reception' ||
-				field === 'attend_ceremony' ||
-				field === 'will_not_attend'
-			) {
-				result[id][field] = value === 'on';
-			} else {
-				result[id][field] = value as string;
-			}
-		});
-
-		const resultArray: Entry[] = Object.entries(result).map(([key, value]) => {
-			return {
+			const resultArray: Entry[] = Object.entries(result).map(([key, value]) => ({
 				id: key,
 				...value
-			};
-		});
+			}));
 
-		await insertDataIntoSheet(resultArray);
+			const insertResult = await insertDataIntoSheet(resultArray);
+
+			if (!insertResult.success) {
+				return {
+					status: 400,
+					body: {
+						success: false,
+						message: insertResult.error
+					}
+				};
+			}
+		} catch (e) {
+			console.error('Form submission error:', e);
+			throw error(500, 'An unexpected error occurred while processing your submission');
+		}
 	}
 };
 
-async function insertDataIntoSheet(data: Entry[]) {
+interface SheetResponse {
+	success: boolean;
+	error?: string;
+}
+
+async function insertDataIntoSheet(data: Entry[]): Promise<SheetResponse> {
 	const auth = new google.auth.GoogleAuth({
 		keyFile: 'cred.json',
 		scopes: SCOPES
@@ -105,7 +122,9 @@ async function insertDataIntoSheet(data: Entry[]) {
 		});
 
 		console.log('Data inserted successfully:', response.data);
-	} catch (error) {
-		console.error('Error inserting data:', error);
+		return { success: true };
+	} catch (e) {
+		console.error('Error inserting data:', e);
+		throw error(500, `An unexpected error occurred while inserting data: ${data}`);
 	}
 }

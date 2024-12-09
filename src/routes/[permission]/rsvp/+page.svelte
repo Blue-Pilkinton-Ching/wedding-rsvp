@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import image from '$lib/images/kissy.jpg?enhanced';
-	import { Card, Button } from 'flowbite-svelte';
+	import { Card, Button, Spinner } from 'flowbite-svelte';
 	import * as Icon from 'flowbite-svelte-icons';
 	import { cubicOut, quartOut, quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
@@ -16,10 +16,26 @@
 
 	let people: Array<string> = [];
 
+	let loading = false;
+	let error = '';
+
 	$: people, hasRSVP;
 
 	function handleSubmit() {
-		hasRSVP = true;
+		loading = true;
+		error = '';
+
+		return async ({ result, update }: { result: any; update: () => void }) => {
+			console.log(result);
+
+			if (result.type === 'success') {
+				hasRSVP = true;
+			} else if (result.type === 'error') {
+				console.error(result.error);
+				error = result.error?.message || 'Something went wrong';
+			}
+			loading = false;
+		};
 	}
 </script>
 
@@ -44,6 +60,22 @@
 				>hello@nickandhana.com</a
 			></strong
 		>. See you there!
+	</h2>
+{:else if loading}
+	<div class="flex h-full w-full items-center justify-center">
+		<Spinner class="w-10 h-10" />
+	</div>
+{:else if error}
+	<h1 class="my-12 text-center mb-6 text-3xl font-lato font-light">Whoops! Something went wrong</h1>
+	<h2 class="mt-12 text-center mb-6 text-lg font-lato font-light max-w-[500px]">
+		Please try again lateR.<br /><br />If the issue persists, please let us know at
+		<strong class="font-semibold relative"
+			><a
+				href="mailto:hello@nickandhana.com"
+				class="after:absolute after:h-[1px] after:w-0 after:bg-black after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
+				>hello@nickandhana.com</a
+			></strong
+		>. Thanks!
 	</h2>
 {:else}
 	<AnimatablePage>
