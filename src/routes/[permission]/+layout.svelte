@@ -28,7 +28,12 @@
 						currentPath={$page.url.pathname}
 						on:click={toggleMenu}
 					/>
-					<!-- <NavItem href={`/${data.permission}/gifts`} label="GIFTS" currentPath={$page.url.pathname} /> -->
+					<NavItem
+						href={`/${data.permission}/gifts`}
+						label="GIFTS"
+						currentPath={$page.url.pathname}
+						on:click={toggleMenu}
+					/>
 					<NavItem
 						href={`/${data.permission}/schedule`}
 						label="SCHEDULE"
@@ -78,7 +83,11 @@
 					label="CONTACT"
 					currentPath={$page.url.pathname}
 				/>
-				<!-- <NavItem href={`/${data.permission}/gifts`} label="GIFTS" currentPath={$page.url.pathname} /> -->
+				<NavItem
+					href={`/${data.permission}/gifts`}
+					label="GIFTS"
+					currentPath={$page.url.pathname}
+				/>
 				<NavItem
 					href={`/${data.permission}/schedule`}
 					label="SCHEDULE"
